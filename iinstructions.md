@@ -6,6 +6,11 @@ echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
 
 (чтобы команду не вводить при запуске консоли)
 
+
+##ноды
+
+работает над 1 задачей, может получать\отправлять данные, мб несколько Pb-Sb
+
 At this point you should have three windows open: a terminal ()running turtlesim_node, 
 a terminal running turtle_teleop_key and the turtlesim window. 
 
@@ -40,7 +45,7 @@ __rqt_graph__
 
 график как связаны ноды
 
-
+##Топики
 __ros2 topic echo <topic_name>__
 
 инфа, как двигается по осям xyz угловой и линейный
@@ -61,5 +66,51 @@ __ros2 topic pub <topic_name> <msg_type> '<args>'__
 структура сообщения
 
 
+пример работы топика:
 
+__ros2 topic pub --once /turtle1/cmd_vel geometry_msgs/msg/Twist "{linear: {x: 2.0, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 1.8}}"__
+
+(черепаха подвинется на четверть круга по оси, --once is an optional argument meaning “publish one message then exit”.)
+
+__ros2 topic hz /turtle1/pose__
+
+(показывает, данные о скорости, с которой публикуется инфа. Если --once не выбран, а выбран --rate можно указать эту скорость))
+
+
+ __Ctrl+C__ 
+
+ очищает от нод терминалы
+
+ ##Services
+
+ работает если ток есть запрос от клиента,мб много серверов/клиентов
+
+__ros2 service type <service_name>__
+
+
+__ros2 service list -t__
+
+типы активных серверов
+
+__ros2 service find <type_name>__
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
 
