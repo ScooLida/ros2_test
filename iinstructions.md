@@ -1,3 +1,4 @@
+## Старт
 __Open a new terminal and source ROS 2 again.__
 
 source /opt/ros/humble/setup.bash
