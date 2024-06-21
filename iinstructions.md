@@ -8,7 +8,7 @@ echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
 (чтобы команду не вводить при запуске консоли)
 
 
-##ноды
+## Ноды
 
 работает над 1 задачей, может получать\отправлять данные, мб несколько Pb-Sb
 
@@ -46,7 +46,7 @@ __rqt_graph__
 
 график как связаны ноды
 
-##Топики
+## Топики
 __ros2 topic echo <topic_name>__
 
 инфа, как двигается по осям xyz угловой и линейный
@@ -82,7 +82,7 @@ __ros2 topic hz /turtle1/pose__
 
  очищает от нод терминалы
 
- ##Services
+ ## Services
 
  работает если ток есть запрос от клиента,мб много серверов/клиентов
 
@@ -93,11 +93,13 @@ __ros2 service list -t__
 
 типы активных серверов
 
+
 __ros2 service find <type_name>__
 
 __ros2 service call <service_name> <service_type> <arguments>__
 
 аргументы опционально, прим. epmty не имеет аргументов
+
 
 __ros2 param list__
 
@@ -126,7 +128,7 @@ __ros2 run <package_name> <executable_name> --ros-args --params-file <file_name>
 To start the same node using your saved parameter values
 
 
-##Actions
+## Actions
 
 исп. сервисы с запросом-ответом, используют постоянную связь(как топики),  можно отменить
 
@@ -157,7 +159,7 @@ __ros2 run rqt_console rqt_console__
 для просмотра сообщений, записи, фильира, логов и тп
 
 
-##Запуск нескольких нод
+## Запуск нескольких нод
 
 ros2 launch turtlesim multisim.launch.py
 
@@ -176,9 +178,26 @@ def generate_launch_description():
     ])
 ```
 
+## Запись инфы
+
+mkdir bag_files
+
+cd bag_files
+
+__ros2 bag record <topic_name>__
+
+__ros2 bag record -o subset /turtle1/cmd_vel /turtle1/pose__
+
+Press Ctrl+C to stop recording.
+
+__ros2 bag info <bag_file_name>__
+
+__ros2 bag info subset__
 
 
+__ros2 bag play subset__
 
+черепаха повторит записанные действия
 
 
 
