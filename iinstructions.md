@@ -94,6 +94,100 @@ __ros2 service list -t__
 
 __ros2 service find <type_name>__
 
+__ros2 service call <service_name> <service_type> <arguments>__
+
+аргументы опционально, прим. epmty не имеет аргументов
+
+__ros2 param list__
+
+посмотреть параметры своих нод
+
+__ros2 param get <node_name> <parameter_name>__
+
+
+__ros2 param set <node_name> <parameter_name> <value>__
+
+меняет в тч цвет
+
+
+__ros2 param dump <node_name> > файл__
+
+вывести параметры ноды в файл
+
+
+__ros2 param load <node_name> <parameter_file.yaml>__
+
+назначить ноде параметры из файла
+
+
+__ros2 run <package_name> <executable_name> --ros-args --params-file <file_name>__
+
+To start the same node using your saved parameter values
+
+
+##Actions
+
+исп. сервисы с запросом-ответом, используют постоянную связь(как топики),  можно отменить
+
+экшн-клиент отправляет цель, экшн сервис выполняет запрос и присылает топик-фидбек
+
+в черепахе "цель" - жатие буквы для движения
+
+
+__ros2 action list__
+
+доб -t
+
+__ros2 action info <экшн>__
+
+
+__ros2 interface show <экшн>__
+
+что хотели--- что получили--- фидбек
+
+
+__ros2 action send_goal <action_name> <action_type> <values "{theta: 1.57}">__
+
+доб. --feedback чтобы увидеть фидбек
+
+
+__ros2 run rqt_console rqt_console__
+
+для просмотра сообщений, записи, фильира, логов и тп
+
+
+##Запуск нескольких нод
+
+ros2 launch turtlesim multisim.launch.py
+
+```python
+# turtlesim/launch/multisim.launch.py
+
+from launch import LaunchDescription
+import launch_ros.actions
+
+def generate_launch_description():
+    return LaunchDescription([
+        launch_ros.actions.Node(
+            namespace= "turtlesim1", package='turtlesim', executable='turtlesim_node', output='screen'),
+        launch_ros.actions.Node(
+            namespace= "turtlesim2", package='turtlesim', executable='turtlesim_node', output='screen'),
+    ])
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
